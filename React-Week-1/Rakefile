@@ -1,0 +1,29 @@
+path_to_site = '../../site'
+lecture = Dir.pwd.split('/').last
+
+task :distribute do
+  Dir.glob('lecture*').each do |lecture_dir|
+    curr_lecture = lecture_dir.split('/').last
+    `cp Rakefile #{lecture_dir}`
+    `cp base_files/lecture_template.html #{lecture_dir}/#{curr_lecture}.html`
+    `cp base_files/slides.md #{lecture_dir}/slides.md`
+  end
+end
+
+task :view do
+  trap('SIGINT') { puts "\nQuitting server"; exit }
+  puts 'Starting the server...'
+  puts "Visit http://localhost:8080/#{lecture}.html to view the slides"
+  puts 'Type Ctrl + C to exit the server'
+  `http-server . -c-1 -o`
+end
+
+task :make_pdf do
+  puts 'Creating PDF'
+  `decktape remark http://localhost:8080/#{lecture}.html CIS196-2018s-#{lecture}.pdf`
+  puts 'PDF succesfully created'
+end
+
+task :deploy do
+  `cp CIS196-2018s-#{lecture}.pdf #{path_to_site}/lectures`
+end
