@@ -1,18 +1,26 @@
-import ZZeact from "../../ZZeact/ZZeact"
+import ZZeact, {Component} from "../../ZZeact/ZZeact"
 
-function Story(story) {
-  console.log(story.likes);
-  return (
-    <li>
-      <button onClick={e => handleClick(story)}>{story.likes}❤️</button>
-      <a href={story.url}>{story.name}</a>
-    </li>
-  );
-}
-
-function handleClick(story) {
-  story.likes += 1;
-  ZZeact.rerender();
+class Story extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { likes: Math.ceil(Math.random() * 100) };
+  }
+  like() {
+    this.setState({
+      likes: this.state.likes + 1
+    });
+  }
+  render() {
+    const { name, url } = this.props;
+    const { likes } = this.state;
+    const likesElement = <span />;
+    return (
+      <li>
+        <button onClick={e => this.like()}>{likes}<b>❤️</b></button>
+        <a href={url}>{name}</a>
+      </li>
+    );
+  }
 }
 
 export default Story;
