@@ -1,4 +1,4 @@
-import { createElement } from "../../ZZeact/ZZeact"
+import ZZeact from "../../ZZeact/ZZeact"
 
 function Story({ name, url }) {
   const likes = Math.ceil(Math.random() * 100);

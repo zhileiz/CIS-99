@@ -1,5 +1,5 @@
 import Story from "./Story"
-import { createElement } from "../../ZZeact/ZZeact"
+import ZZeact from "../../ZZeact/ZZeact"
 
 const stories = [
   { name: "1. Didact introduction", url: "http://bit.ly/2pX7HNn" },
