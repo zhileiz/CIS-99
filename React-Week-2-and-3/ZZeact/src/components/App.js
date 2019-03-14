@@ -1,4 +1,5 @@
 import Story from "./Story"
+import { createElement } from "../../ZZeact/ZZeact"
 
 const stories = [
   { name: "1. Didact introduction", url: "http://bit.ly/2pX7HNn" },
@@ -8,18 +9,6 @@ const stories = [
   { name: "5. Components and state", url: "http://bit.ly/2rE16nh" }
 ];
 
-const App = {
-  type: "div",
-  props: {
-    children: [
-      {
-        type: "ul",
-        props: {
-          children: stories.map(Story)
-        }
-      }
-    ]
-  }
-};
+const App = <div><ul>{stories.map(Story)}</ul></div>;
 
 export default App;

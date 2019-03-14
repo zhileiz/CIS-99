@@ -1,4 +1,4 @@
-import ZZeact from "../ZZeact/ZZeact";
+import {render} from "../ZZeact/ZZeact";
 import App from "./components/App";
 
-ZZeact.render(App, document.getElementById("root"));
+render(App, document.getElementById("root"));
