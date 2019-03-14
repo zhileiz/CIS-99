@@ -1,13 +1,18 @@
 import ZZeact from "../../ZZeact/ZZeact"
 
-function Story({ name, url }) {
-  const likes = Math.ceil(Math.random() * 100);
+function Story(story) {
+  console.log(story.likes);
   return (
     <li>
-      <button>{likes}❤️</button>
-      <a href={url}>{name}</a>
+      <button onClick={e => handleClick(story)}>{story.likes}❤️</button>
+      <a href={story.url}>{story.name}</a>
     </li>
   );
+}
+
+function handleClick(story) {
+  story.likes += 1;
+  ZZeact.rerender();
 }
 
 export default Story;
