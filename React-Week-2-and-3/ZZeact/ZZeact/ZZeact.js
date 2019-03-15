@@ -152,6 +152,7 @@ function updateInstance(internalInstance) {
 }
 
 function createPublicInstance(element, internalInstance) {
+  console.log(element);
   const { type, props } = element;
   const publicInstance = new type(props);
   publicInstance.__internalInstance = internalInstance;
